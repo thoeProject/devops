@@ -159,7 +159,12 @@ resource "azurerm_linux_virtual_machine" "main" {
   disable_password_authentication = false
   network_interface_ids           = [element(azurerm_network_interface.main.*.id, count.index)]
   
-  source_image_id     = var.packerImageId
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
 
   os_disk {
     storage_account_type = "Standard_LRS"
