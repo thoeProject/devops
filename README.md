@@ -32,6 +32,6 @@ The project will consist of the following main steps:
 - After done this step, login on your Azure and see result:
 ![output](https://user-images.githubusercontent.com/63529255/232326793-33e162f3-5717-4b18-829a-b6a07ffd0856.png)
 
-**Customize vars.tf **
+# Customize vars.tf
 This file contains all the variables used inside the terraform/main.tf. If you want to deploy on other servers, 
 you need to change values default inside the file. variable "server_names"{ type = list default = ["<Server_1>","Server_2"] }
