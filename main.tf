@@ -28,8 +28,8 @@ resource "azurerm_network_security_group" "main" {
   location            = var.location
   resource_group_name = var.resourceGroup
   
-  security_rule {
-    name                       = "${var.prefix}-deny-inbound-internet"
+   security_rule {
+    name                       = "${var.prefix}-deny-inbound-traffic"
     priority                   = 1000
     direction                  = "Inbound"
     access                     = "Deny"
@@ -57,6 +57,18 @@ resource "azurerm_network_security_group" "main" {
     priority                   = 1002
     direction                  = "Inbound"
     access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  
+  security_rule {
+    name                       = "${var.prefix}-deny-inbound-internet"
+    priority                   = 1003
+    direction                  = "Inbound"
+    access                     = "Deny"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
